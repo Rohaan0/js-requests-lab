@@ -78,12 +78,13 @@ const ohMy = () => {
     // YOUR CODE HERE
     axios.get(`${baseURL}/animals`)
     .then((response) => {
+        let section = document.querySelector('section')
         for (i = 0; i < response.data.length; i++) {
-            paraIndex = document.createElement('p')
-            paraIndex[i] = response.data
+           let paraIndex = document.createElement('p')
+            paraIndex.textContent = response.data[i]
+            section.appendChild(paraIndex)
   
         } 
-        return paraIndex[i]
     })
     .catch((error) => {
         console.log(error)
@@ -148,7 +149,7 @@ document.querySelector('#repeat-button').addEventListener('click', repeatMyParam
 
 // CODE HERE
 function sendAQuery() {
-    axios.get(`${baseURL}/query-test/?name=Rohaan /? age=18`)
+    axios.get(`${baseURL}/query-test/?name=rohaan`)
     .then((response) => {
         console.log(response)
     })
